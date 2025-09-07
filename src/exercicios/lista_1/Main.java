@@ -1,6 +1,8 @@
 package exercicios.lista_1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +11,7 @@ public class Main {
         Scanner leitor = new Scanner(System.in);
 
         while (loop != 1) {
-            System.out.print("Digite o exercicio que deseja ver: ");
+            System.out.print("Digite o exercicio que deseja ver (Digite 0 para sair!): ");
             int escolha = leitor.nextInt();
 
             switch (escolha) {
@@ -113,7 +115,154 @@ public class Main {
                     var exercicio5 = new Exercicio5(numero);
                     exercicio5.mostrarResultado();
                     break;
+                case 6:
+                    // Exercicio 6:
+                    System.out.printf("Digite um numero (com ponto flutuante) para arredondar: ");
+                    double num = leitor.nextDouble();
+                    var exercicio6 = new Exercicio6(num); // linha: 119
 
+                    exercicio6.mostrarResultado();
+                    break;
+
+                case 7:
+                    // Exercicio 7:
+                    int h1, m1, s1, h2, m2, s2;
+
+                    System.out.println("Digite os dados necessários:");
+                    System.out.println(" ");
+                    System.out.println("Horário 1: ");
+
+                    do {
+                        System.out.printf("Hora 1 (0-23h): ");
+                        h1 = leitor.nextInt();
+
+                        if (h1 < 0 || h1 > 23) {
+                            System.out.println("Hora incorreta! Tente novamente!");
+                        }
+
+                    } while (h1 < 0 || h1 > 23);
+
+                    do {
+                        System.out.printf("Minuto 1: (0-59min): ");
+                        m1 = leitor.nextInt();
+
+                        if (m1 < 0 || m1 > 59) {
+                            System.out.println("Minutos incorreto! Tente novamente!");
+                        }
+
+                    } while (m1 < 0 || m1 > 59);
+
+                    do {
+                        System.out.printf("Segundo 1: (0-59seg): ");
+                        s1 = leitor.nextInt();
+
+                        if (s1 < 0 || s1 > 59) {
+                            System.out.println("Hora incorreta! Tente novamente!");
+                        }
+
+                    } while (s1 < 0 || s1 > 59);
+
+                    System.out.println(" ");
+                    System.out.println("Horário 2:");
+
+                    do {
+                        System.out.printf("Hora 2 (0-23h): ");
+                        h2 = leitor.nextInt();
+
+                        if (h2 < 0 || h2 > 23) {
+                            System.out.println("Hora incorreta! Tente novamente!");
+                        }
+
+                    } while (h2 < 0 || h2 > 23);
+
+                    do {
+                        System.out.printf("Minuto 2: (0-59min): ");
+                        m2 = leitor.nextInt();
+
+                        if (m2 < 0 || m2 > 59) {
+                            System.out.println("Hora incorreta! Tente novamente!");
+                        }
+
+                    } while (m2 < 0 || m2 > 59);
+
+                    do {
+                        System.out.printf("Segundo 2: (0-59seg): ");
+                        s2 = leitor.nextInt();
+
+                        if (s2 < 0 || s2 > 59) {
+                            System.out.println("Hora incorreta! Tente novamente!");
+                        }
+
+                    } while (s2 < 0 || s2 > 59);
+
+
+                    int somaTotalH1 = h1 * 3600 + m1 * 60 + s1;
+                    int somaTotalH2 = h2 * 3600 + m2 * 60 + s2;
+
+                    // se h2 for menor, um dia se passou e deve se passar 1 dia a mais em segundos
+                    if (somaTotalH1 > somaTotalH2) {
+                        somaTotalH2 += 24 * 3600;
+                    }
+
+                    var exercicio7 = new Exercicio7(somaTotalH1, somaTotalH2);
+
+                    exercicio7.calcularResultado();
+
+                    break;
+
+                case 8:
+                    // Exercício 8:
+                    int [] numeros = new int[3];
+                    System.out.println("Digite 3 números a seguir:");
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.printf("Digite o número %d: ", i + 1);
+                        int digito = leitor.nextInt();
+                        numeros[i] += digito;
+                    }
+
+                    var exercicio8 = new Exercicio8(numeros);
+                    exercicio8.mostrarResultado();
+
+                    break;
+
+                case 9:
+                    // Exercício 9:
+                    List <Integer> nums = new ArrayList<>();
+                    System.out.println("Digite 3 números a seguir:");
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.printf("Digite o número %d: ", i + 1);
+                        int ns = leitor.nextInt();
+                        nums.add(ns);
+                    }
+
+                    System.out.println("Ordem colocada: " + nums);
+
+                    var exercicio9 = new Exercicio9(nums);
+
+                    System.out.println("Em ordem decrescente: " + exercicio9.getNumeros());
+                    break;
+
+                case 10:
+                    // Exercício 10:
+                    // Ler 3 valores numéricos e imprimir a soma dos 2 maiores e a diferença dos 2 menores.
+
+                    List <Integer> ns = new ArrayList<>();
+
+                    System.out.println("Digite 3 números a seguir: ");
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.printf("Digite o número %d: ", i + 1);
+                        int n = leitor.nextInt();
+                        ns.add(n);
+                    }
+
+                    var exercicio10 = new Exercicio10(ns);
+
+                    exercicio10.calcularResultado();
+
+                    break;
                 case 0:
                     loop = 1;
                     break;
@@ -121,6 +270,7 @@ public class Main {
                     break;
             }
         }
+        System.out.println("Programa encerrado!");
         leitor.close();
     }
 }
