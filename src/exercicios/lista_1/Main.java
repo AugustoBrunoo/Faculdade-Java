@@ -1,7 +1,6 @@
 package exercicios.lista_1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -261,6 +260,153 @@ public class Main {
                     var exercicio10 = new Exercicio10(ns);
 
                     exercicio10.calcularResultado();
+
+                    break;
+
+                case 11:
+                    // Exercício 11:
+                    char escala;
+
+                    do {
+                        System.out.println("Digite a escala desejada para conversão: ");
+                        System.out.println("C - Celsius");
+                        System.out.println("F - Fahrenheit");
+                        System.out.printf("Digite a escala: ");
+
+                        escala = leitor.next().toUpperCase().charAt(0);
+
+                        if (escala != 'C' && escala != 'F') {
+                            System.out.println("Escala incorreta! Digite as escalas existentes:");
+                        }
+
+                    } while (escala != 'C' && escala != 'F');
+
+                    double temperatura;
+
+                    if (escala == 'C') {
+                        System.out.printf("Digite a temperatura em ºC: ");
+                        temperatura = leitor.nextDouble();
+                    } else {
+                        System.out.printf("Digite a temperatura em ºF: ");
+                        temperatura = leitor.nextDouble();
+                    }
+
+                    var exercicio11 = new Exercicio11(escala, temperatura);
+
+                    exercicio11.mostrarResultado();
+                    break;
+
+                case 12:
+                    // Exercicio 12:
+                    System.out.println("Calculadora de IR:");
+                    int horasTrabalhadas;
+                    double valorPorHora;
+
+                    do {
+                        System.out.printf("Quantas horas você trabalhou no mês? ");
+                        horasTrabalhadas = leitor.nextInt();
+
+                        if (horasTrabalhadas > 732) {
+                            System.out.println("Atenção!");
+                            System.out.println("1 mês tem 732h em média");
+                            System.out.printf("%d execede mais de 1 mês de trabalho!\n", horasTrabalhadas);
+                            System.out.println(" ");
+                        }
+
+                    } while (horasTrabalhadas > 732);
+
+                    System.out.printf("Qual é o valor da sua hora trabalhada (R$/1h)? ");
+                    valorPorHora = leitor.nextDouble();
+
+                    var exercicio12 = new Exercicio12(horasTrabalhadas, valorPorHora);
+
+                    exercicio12.calcularIR();
+
+                    break;
+
+                case 13:
+                    System.out.println("Calculadora de bônus semanal:");
+
+                    int horasTrab;
+                    double valorDaHTrab;
+
+                    do {
+                        System.out.printf("Digite o numero de horas trabalhadas nesta semana: ");
+                        horasTrab = leitor.nextInt();
+                    } while (horasTrab > 168 || horasTrab < 0);
+
+                    do {
+                        System.out.printf("Digite o valor da sua hora trabalhada (1h/R$): R$");
+                        valorDaHTrab = leitor.nextDouble();
+
+                        if (valorDaHTrab < 0) System.out.printf("Digite o valor do seu salário corretamente!");
+
+                    } while (valorDaHTrab < 0);
+
+                    var exercicio13 = new Exercicio13(horasTrab, valorDaHTrab);
+
+                    // Rever a partir daqui ---
+
+                    // Calcula o salário final (com ou sem bônus) de uma vez
+                    double salarioFinal = exercicio13.calcularBonus();
+
+                    System.out.println("\n--- Holerite Semanal ---");
+                    System.out.printf("Horas trabalhadas: %d h\n", horasTrab);
+                    System.out.printf("Valor da hora normal: R$ %.2f\n", valorDaHTrab);
+
+                    // Comparamos as horas trabalhadas para decidir a mensagem
+                    if (horasTrab <= 40) {
+                        System.out.println("Não houve horas extras nesta semana.");
+                        System.out.printf("Salário Semanal: R$ %.2f\n", salarioFinal);
+                    } else {
+                        double salarioBase = 40 * valorDaHTrab;
+                        double valorBonus = salarioFinal - salarioBase;
+
+                        System.out.println("Houve horas extras com bônus!");
+                        System.out.printf("Valor do bônus sobre as horas extras: R$ %.2f\n", valorBonus);
+                        System.out.printf("Salário Semanal Final: R$ %.2f\n", salarioFinal);
+                    }
+
+                    break;
+
+                case 14:
+                    // Exercicio 14:
+
+                    System.out.println("É um triangulo?");
+                    System.out.printf("Digite o valor do lado a: ");
+                    int a = leitor.nextInt();
+                    System.out.printf("Digite o valor do lado b: ");
+                    int b = leitor.nextInt();
+                    System.out.printf("Digite o valor do lado c: ");
+                    int c = leitor.nextInt();
+
+                    if ((a + b > c) && (a + c > b) && (b + c > a)) {
+                        var exercicio14 = new Exercicio14(a, b, c);
+                        exercicio14.mostrarTriangulo();
+
+                    } else {
+                        System.out.println("Com as medidas dadas, ele não será um triângulo!");
+                    }
+
+                    break;
+
+                case 15:
+                    // Exercício 15:
+                    int numDigito;
+
+                    do {
+                        System.out.printf("Digite um número de 4 digitos: ");
+                        numDigito = leitor.nextInt();
+
+                        if (numDigito < 1000 || numDigito > 9999) {
+                            System.out.println("Digite um valor de 4 dígitos!");
+                        }
+
+                    } while (numDigito < 1000 || numDigito > 9999);
+
+                    var exercicio15 = new Exercicio15(numDigito);
+
+                    exercicio15.verificarCondicao();
 
                     break;
                 case 0:
