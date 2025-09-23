@@ -116,13 +116,51 @@ public class Main {
                         System.out.printf("Digite um número: ");
                         num_e7 = leitor.nextInt();
 
-                        numeros.add(num_e7);
+                        if (num_e7 > 0) {
+                            numeros.add(num_e7);
+                        }
 
-                    } while (num_e7 >= 0);
+                    } while (num_e7 != 0);
 
-                    var exercicio7 = new Exercicio7_e2();
+                    var exercicio7 = new Exercicio7_e2(numeros); // linha 123
 
+                    exercicio7.mostrarCalculo();
+                    break;
 
+                case 8:
+                    // Exercício 8:
+                    ArrayList<Integer> valores = new ArrayList<>();
+
+                    int v;
+                    int pos = 0;
+
+                    do {
+                        System.out.printf("Posição do número da lista: %d\n", pos);
+                        System.out.printf("(Para encerrar digite zero ou valor negativo)\n");
+                        System.out.printf("Digite um número: ");
+                        v = leitor.nextInt();
+
+                        if (v > 0) {
+                            valores.add(v);
+                        }
+
+                        pos++;
+                    } while (v != 0);
+
+                    var exercicio8 = new Exercicio8_l2(valores);
+
+                    exercicio8.mostrarCalculo();
+
+                    break;
+
+                case 9:
+                    // Exercicio 9: Ler um inteiro n e imprimir seus divisores.
+
+                    System.out.printf("Digite um número e direi seus divisores: ");
+                    int n9 = leitor.nextInt();
+
+                    var exercicio9 = new Exercicio9_l2();
+                    // continuar aqui...
                     break;
                 default:
                     break;
